@@ -16,19 +16,21 @@
     {
       var newRow = document.createElement("div");
       newRow.classList.add("cell");
+      newRow.setAttribute("onclick", "Ejercicio2(this)");
       var newRowElement = document.createTextNode("");
       newRow.appendChild(newRowElement);
       containerDiv.appendChild(newRow);
     }
 
+    //Ejercicio1();
 
-    //Update the code so it changes the color of it's even or odd cells every half second.
+    function Ejercicio1(){
+    	//Update the code so it changes the color of it's even or odd cells every half second.
     var Even = 0;
     setInterval(function(){
       var allCells = document.body.getElementsByClassName("cell");
       for(var i=0; i<allCells.length; i++)
-      {
-        
+      {   
         if((Even === 0 && i%2===0) || (Even === 1 && i%2!==0))
         {
           allCells[i].classList.add("active");
@@ -44,6 +46,24 @@
         Even = 0;
 
     }, 500)
+    }
+
+    //Update the code so you can click on one of the cells to make it active. Please take into account that only one cell can be active at a time.
+    function Ejercicio2(cell){
+      var activeCells = document.body.getElementsByClassName("cell");
+      for(var i = 0; i<activeCells.length;i++)
+      {
+        activeCells[i].classList.remove("active");
+      }
+      cell.classList.add("active");
+    }
+
+
+
+
+    // object.onkeypress = function(){
+    // 	myScript};
+    
 
     </script>
   </body>
