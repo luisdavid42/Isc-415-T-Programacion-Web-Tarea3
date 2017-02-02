@@ -12,6 +12,8 @@
      <script>
 
     var containerDiv = document.body.getElementsByClassName("container")[0];
+    document.body.setAttribute("onkeydown", "setActivewithKeyboard(event)");
+
     for(var i=0; i<100; i++)
     {
       var newRow = document.createElement("div");
@@ -58,11 +60,44 @@
       cell.classList.add("active");
     }
 
+function setActivewithKeyboard(event)
+    {
+      var activeCells = document.body.getElementsByClassName("cell");
+      var activeCellNumber = -1;
+      for (var i = 0; i<activeCells.length; i++)
+      {
+        if(activeCells[i].classList.contains("active"))
+        {
+          activeCellNumber = i;
+          
+        }
+      }
+      const keyName = event.key;
 
+		  //izquierda
+		  if (keyName === 'a' && (i-1)%10!==0){
+		    if(activeCellNumber-1>=0) {activeCells[activeCellNumber].classList.remove("active"); activeCells[activeCellNumber-1].classList.add("active")};
+		    return;
+		  }
 
+		  //abajo
+		  if (keyName === 's') {
+		    if(activeCellNumber+10<100) {activeCells[activeCellNumber].classList.remove("active"); activeCells[activeCellNumber+10].classList.add("active")};
+		    return;
+		  }
 
-    // object.onkeypress = function(){
-    // 	myScript};
+		  //derecha
+		  if (keyName === 'd') {
+		    if(activeCellNumber+1<100) {activeCells[activeCellNumber].classList.remove("active"); activeCells[activeCellNumber+1].classList.add("active")};
+		    return;
+		  }
+
+		  //arriba
+		  if (keyName === 'w') {
+		    if(activeCellNumber-10>=0) {activeCells[activeCellNumber].classList.remove("active"); activeCells[activeCellNumber-10].classList.add("active")};
+		    return;
+		  }
+		    }
     
 
     </script>
